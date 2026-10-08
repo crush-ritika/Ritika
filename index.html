@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#fff6f8">
 
 <title>A Little Secret — For Ritika</title>
@@ -17,28 +17,41 @@
 
 <body>
 
+<!-- FLOATING HEARTS -->
 <div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
 
+<!-- HEADER -->
 <header>
   <a href="#home" class="logo">♡</a>
   <span>made with a little courage</span>
 </header>
 
+
 <main>
 
-<!-- HOME -->
+<!-- ================= HOME ================= -->
+
 <section class="hero" id="home">
 
   <div class="orbit">
     <b>♥</b>
   </div>
 
-  <p class="eyebrow">A tiny secret • just for you</p>
+  <p class="eyebrow">
+    A tiny secret • just for you
+  </p>
 
   <h1>
     Hey,<br>
     <em>Ritika</em> ♡
   </h1>
+
+
+  <!-- PHOTO -->
+  <div class="photo-frame">
+    <img src="Ritika.jpg" alt="Ritika">
+  </div>
+
 
   <p class="heroText">
     I made something small for you.<br>
@@ -49,17 +62,22 @@
     Open the little secret <span>↓</span>
   </button>
 
-  <small class="swipe">scroll gently ↓</small>
+  <small class="swipe">
+    scroll gently ↓
+  </small>
 
 </section>
 
 
-<!-- STORY -->
+<!-- ================= STORY ================= -->
+
 <section class="story blush" id="story">
 
   <small class="num">01</small>
 
-  <p class="eyebrow">A little thought</p>
+  <p class="eyebrow">
+    A little thought
+  </p>
 
   <h2>
     Some people<br>
@@ -73,18 +91,21 @@
   </p>
 
   <button class="link next" data-target="little">
-    keep going →
+    KEEP GOING →
   </button>
 
 </section>
 
 
-<!-- LITTLE THINGS -->
+<!-- ================= LITTLE THINGS ================= -->
+
 <section class="story" id="little">
 
   <small class="num">02</small>
 
-  <p class="eyebrow">The little things</p>
+  <p class="eyebrow">
+    The little things
+  </p>
 
   <h2>
     Maybe it's<br>
@@ -102,6 +123,7 @@
       <small>the ones that stay</small>
     </button>
 
+
     <button
       class="note"
       data-note="Those tiny moments that make you smile for no logical reason."
@@ -110,6 +132,7 @@
       <strong>Little moments</strong>
       <small>the unexpected ones</small>
     </button>
+
 
     <button
       class="note"
@@ -122,19 +145,24 @@
 
   </div>
 
-  <p class="tap">tap a card ♡</p>
+  <p class="tap">
+    tap a card ♡
+  </p>
 
   <button class="link next" data-target="question">
-    one more thing →
+    ONE MORE THING →
   </button>
 
 </section>
 
 
-<!-- QUESTION -->
+<!-- ================= QUESTION ================= -->
+
 <section class="question" id="question">
 
-  <div class="bigHeart">♡</div>
+  <div class="bigHeart">
+    ♡
+  </div>
 
   <p class="eyebrow">
     03 • okay, enough mystery
@@ -157,7 +185,8 @@
 </section>
 
 
-<!-- ENVELOPE -->
+<!-- ================= ENVELOPE ================= -->
+
 <section class="envelopeSection" id="envelopeSection">
 
   <p class="eyebrow">
@@ -167,6 +196,7 @@
   <h2>
     Open it when you're ready.
   </h2>
+
 
   <div
     class="envelope-wrap"
@@ -182,18 +212,23 @@
 
       <div class="letter-paper">
         <b>For Ritika ♡</b>
-        <span>there's a little secret inside...</span>
+        <span>
+          there's a little secret inside...
+        </span>
       </div>
 
       <div class="pocket"></div>
 
       <div class="flap"></div>
 
-      <div class="seal">♡</div>
+      <div class="seal">
+        ♡
+      </div>
 
     </div>
 
   </div>
+
 
   <p class="tapHint" id="tapHint">
     tap the envelope ♡
@@ -202,10 +237,13 @@
 </section>
 
 
-<!-- CONFESSION -->
+<!-- ================= CONFESSION ================= -->
+
 <section class="confession" id="confession">
 
-  <div class="bigHeart">♥</div>
+  <div class="bigHeart">
+    ♥
+  </div>
 
   <p class="eyebrow">
     05 • The secret is...
@@ -221,6 +259,7 @@
     so I finally did.
   </p>
 
+
   <div class="gentle">
 
     <strong>
@@ -235,6 +274,7 @@
 
   </div>
 
+
   <div class="choices">
 
     <button id="talk">
@@ -247,9 +287,11 @@
 
   </div>
 
+
   <p class="sign">
     — from someone who thinks you're pretty special
   </p>
+
 
   <button class="restart" id="restart">
     ↻ read it again
@@ -260,7 +302,8 @@
 </main>
 
 
-<!-- MODAL -->
+<!-- ================= MODAL ================= -->
+
 <div class="modal" id="modal">
 
   <div class="modalCard">
@@ -269,7 +312,9 @@
       ×
     </button>
 
-    <div>♡</div>
+    <div class="modalHeart">
+      ♡
+    </div>
 
     <p id="modalText"></p>
 
@@ -278,9 +323,12 @@
 </div>
 
 
-<!-- TOAST -->
+<!-- ================= TOAST ================= -->
+
 <div class="toast" id="toast"></div>
 
+
+<!-- JAVASCRIPT -->
 
 <script src="script.js"></script>
 
