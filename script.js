@@ -297,3 +297,41 @@ $("#restart").onclick = () => {
   });
 
 };
+
+
+// ===============================
+// MUSIC PLAYER 🎵
+// ===============================
+
+const music = $("#bgMusic");
+const musicBtn = $("#musicBtn");
+
+if (music && musicBtn) {
+
+  musicBtn.onclick = () => {
+
+    if (music.paused) {
+
+      music.play()
+        .then(() => {
+
+          musicBtn.textContent = "⏸️ Pause Music";
+
+        })
+        .catch(() => {
+
+          musicBtn.textContent = "🎵 Tap to Play";
+
+        });
+
+    } else {
+
+      music.pause();
+
+      musicBtn.textContent = "🎵 Play Music";
+
+    }
+
+  };
+
+}
