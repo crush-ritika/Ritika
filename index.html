@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#fff6f8">
+<title>A Little Secret — For Ritika</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
+<header><a href="#home" class="logo">♡</a><span>made with a little courage</span></header>
+<main>
+<section class="hero" id="home"><div class="orbit"><b>♥</b></div><p class="eyebrow">A tiny secret • just for you</p>
+<h1>Hey,<br><em>Ritika</em> ♡</h1><p class="heroText">I made something small for you.<br>Nothing complicated. Just a feeling.</p>
+<button class="primary" id="start">Open the little secret <span>↓</span></button><small class="swipe">scroll gently ↓</small></section>
+
+<section class="story blush" id="story"><small class="num">01</small><p class="eyebrow">A little thought</p>
+<h2>Some people<br><em>just stand out.</em></h2><p class="copy">Not because they're trying to. They just have this way of making ordinary moments feel a little nicer.</p>
+<button class="link next" data-target="little">keep going →</button></section>
+
+<section class="story" id="little"><small class="num">02</small><p class="eyebrow">The little things</p>
+<h2>Maybe it's<br><em>these things.</em></h2>
+<div class="notes">
+<button class="note" data-note="The conversations you don't expect to remember… but somehow do."><span>💬</span><strong>Conversations</strong><small>the ones that stay</small></button>
+<button class="note" data-note="Those tiny moments that make you smile for no logical reason."><span>✨</span><strong>Little moments</strong><small>the unexpected ones</small></button>
+<button class="note" data-note="Sometimes just seeing someone can make an ordinary day feel a bit brighter."><span>🌷</span><strong>Your presence</strong><small>quietly special</small></button>
+</div><p class="tap">tap a card ♡</p><button class="link next" data-target="question">one more thing →</button></section>
+
+<section class="question" id="question"><div class="bigHeart">♡</div><p class="eyebrow">03 • okay, enough mystery</p>
+<h2>Can I tell you<br><em>something?</em></h2><p class="copy center">No tricks, no pressure, no expectation. I just wanted a nice way to be honest.</p>
+<button class="primary" id="reveal">Tell me <span>♡</span></button></section>
+
+<section class="envelopeSection" id="envelopeSection"><p class="eyebrow">04 • one last little thing</p><h2>Open it when you're ready.</h2><div class="envelope-wrap" id="envelope" tabindex="0" role="button" aria-label="Open secret envelope"><div class="envelope"><div class="env-back"></div><div class="letter-paper"><b>For Ritika ♡</b><span>there's a little secret inside...</span></div><div class="pocket"></div><div class="flap"></div><div class="seal">♡</div></div></div><p class="tapHint" id="tapHint">tap the envelope ♡</p></section>
+
+<section class="confession" id="confession"><div class="bigHeart">♥</div><p class="eyebrow">05 • The secret is...</p>
+<h2>Ritika,<br><em>I like you.</em> ♡</h2><p class="copy center">I've wanted to say it for a while, so I finally did.</p>
+<div class="gentle"><strong>You don't have to feel the same.</strong><p>You don't owe me an answer, a yes, or anything at all. Whatever you feel is completely okay. I just wanted you to know.</p></div>
+<div class="choices"><button id="talk">😊 I'd like to talk</button><button id="later">🌙 Maybe another time</button></div>
+<p class="sign">— from someone who thinks you're pretty special</p><button class="restart" id="restart">↻ read it again</button></section>
+</main>
+<div class="modal" id="modal"><div class="modalCard"><button class="close" id="close">×</button><div>♡</div><p id="modalText"></p></div></div>
+<div class="toast" id="toast"></div><script src="script.js"></script>
+</body></html>
