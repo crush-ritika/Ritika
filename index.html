@@ -3,334 +3,484 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#fff6f8">
+<meta name="theme-color" content="#08090d">
 
-<title>A Little Secret — For Ritika</title>
+<title>Alone Guy — My Little World</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
+
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #08090d;
+  --panel: #12151d;
+  --text: #e9edf5;
+  --muted: #9ba4b5;
+  --accent: #9baed0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  background: rgba(8,9,13,.85);
+}
+
+.logo {
+  color: var(--accent);
+}
+
+.hero, .story, .question,
+.envelopeSection, .confession {
+  background-color: var(--bg);
+}
+
+.blush {
+  background: #10131b !important;
+}
+
+.eyebrow, .num, .tap, .swipe {
+  color: var(--muted);
+}
+
+h1 em, h2 em {
+  color: var(--accent);
+}
+
+.photo-frame {
+  width: min(75%, 290px);
+  margin: 28px auto;
+  overflow: hidden;
+  border: 1px solid #343c4d;
+  border-radius: 18px;
+  box-shadow: 0 0 35px #9baed01b;
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.primary {
+  background: var(--accent);
+  color: #08090d;
+}
+
+.note, .gentle, .modalCard,
+.music-player {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid #292f3d;
+  border-radius: 16px;
+}
+
+.note {
+  padding: 18px;
+}
+
+.music-player {
+  position: fixed;
+  z-index: 100;
+  bottom: 14px;
+  left: 12px;
+  right: 12px;
+  max-width: 440px;
+  margin: auto;
+  padding: 15px;
+  box-shadow: 0 8px 30px #0009;
+}
+
+.music-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.music-heading strong {
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.music-player select,
+.music-player button {
+  background: #222836;
+  color: white;
+  border: 1px solid #414b5e;
+  border-radius: 9px;
+  padding: 10px;
+}
+
+.music-player select {
+  width: 100%;
+  margin-bottom: 9px;
+}
+
+.music-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.music-controls button {
+  flex: 1;
+}
+
+.music-player audio {
+  display: none;
+}
+
+.music-status {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 9px 0 0;
+}
+
+.music-player button:focus-visible,
+.music-player select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+body {
+  padding-bottom: 145px;
+}
+</style>
 </head>
 
 <body>
 
-<!-- FLOATING HEARTS -->
-<div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
+<div class="floating-hearts" id="floatingHearts"
+     aria-hidden="true"></div>
 
-<!-- HEADER -->
 <header>
-  <a href="#home" class="logo">♡</a>
-  <span>made with a little courage</span>
+  <a href="#home" class="logo">☾</a>
+  <span>alone, but still dreaming</span>
 </header>
 
 <main>
 
-<!-- ================= HOME ================= -->
-
 <section class="hero" id="home">
 
-  <div class="orbit">
-    <b>♥</b>
-  </div>
+  <div class="orbit"><b>☾</b></div>
 
-  <p class="eyebrow">
-    A tiny secret • just for you
-  </p>
+  <p class="eyebrow">A quiet corner of the universe</p>
 
   <h1>
-    Hey,<br>
-    <em>Ritika</em> ♡
+    Welcome to<br>
+    <em>Alone Guy</em> ☾
   </h1>
 
-  <!-- PHOTO -->
+  <!-- Replace my-photo.jpg with your own photo filename -->
   <div class="photo-frame">
-    <img src="Ritika.jpg" alt="Ritika">
+    <img src="my-photo.jpg"
+         alt="Alone Guy"
+         onerror="this.style.display='none'">
   </div>
 
   <p class="heroText">
-    I made something small for you.<br>
-    Nothing complicated. Just a feeling.
+    Lost in my own thoughts.<br>
+    Finding peace in my own world.
   </p>
 
   <button class="primary" id="start">
-    Open the little secret <span>↓</span>
+    Enter my world <span>↓</span>
   </button>
 
-  <small class="swipe">
-    scroll gently ↓
-  </small>
+  <small class="swipe">take it slow ↓</small>
 
 </section>
-
-
-<!-- ================= STORY ================= -->
 
 <section class="story blush" id="story">
 
   <small class="num">01</small>
-
-  <p class="eyebrow">
-    A little thought
-  </p>
+  <p class="eyebrow">Behind the silence</p>
 
   <h2>
-    Some people<br>
-    <em>just stand out.</em>
+    Not every quiet person<br>
+    <em>has nothing to say.</em>
   </h2>
 
   <p class="copy">
-    Not because they're trying to.
-    They just have this way of making
-    ordinary moments feel a little nicer.
+    Some thoughts are hard to explain.
+    Sometimes silence feels peaceful.
+    And sometimes, we just need a little
+    space to understand ourselves.
   </p>
 
   <button class="link next" data-target="little">
-    KEEP GOING →
+    KEEP EXPLORING →
   </button>
 
 </section>
-
-
-<!-- ================= LITTLE THINGS ================= -->
 
 <section class="story" id="little">
 
   <small class="num">02</small>
-
-  <p class="eyebrow">
-    The little things
-  </p>
+  <p class="eyebrow">Pieces of my world</p>
 
   <h2>
-    Maybe it's<br>
-    <em>these things.</em>
+    Little things<br>
+    <em>that feel like me.</em>
   </h2>
 
   <div class="notes">
 
-    <button
-      class="note"
-      data-note="The conversations you don't expect to remember… but somehow do."
-    >
-      <span>💬</span>
-      <strong>Conversations</strong>
-      <small>the ones that stay</small>
+    <button class="note"
+      data-note="The world gets quiet, but the mind keeps telling stories.">
+      <span>🌙</span>
+      <strong>Midnight thoughts</strong>
+      <small>when everything slows down</small>
     </button>
 
-    <button
-      class="note"
-      data-note="Those tiny moments that make you smile for no logical reason."
-    >
-      <span>✨</span>
-      <strong>Little moments</strong>
-      <small>the unexpected ones</small>
+    <button class="note"
+      data-note="Sometimes one song understands a mood better than a thousand words.">
+      <span>🎧</span>
+      <strong>Lost in music</strong>
+      <small>my own little universe</small>
     </button>
 
-    <button
-      class="note"
-      data-note="Sometimes just seeing someone can make an ordinary day feel a bit brighter."
-    >
-      <span>🌷</span>
-      <strong>Your presence</strong>
-      <small>quietly special</small>
+    <button class="note"
+      data-note="Enjoy your own company, but leave room for people who bring good energy into your life.">
+      <span>🌌</span>
+      <strong>My own space</strong>
+      <small>peace over noise</small>
     </button>
 
   </div>
 
-  <p class="tap">
-    tap a card ♡
-  </p>
+  <p class="tap">tap a card ☾</p>
 
   <button class="link next" data-target="question">
-    ONE MORE THING →
+    ONE LAST THING →
   </button>
 
 </section>
-
-
-<!-- ================= QUESTION ================= -->
 
 <section class="question" id="question">
 
-  <div class="bigHeart">
-    ♡
-  </div>
+  <div class="bigHeart">☾</div>
 
-  <p class="eyebrow">
-    03 • okay, enough mystery
-  </p>
+  <p class="eyebrow">03 • a thought to remember</p>
 
   <h2>
-    Can I tell you<br>
-    <em>something?</em>
+    Even in the dark,<br>
+    <em>stars still shine.</em>
   </h2>
 
   <p class="copy center">
-    No tricks, no pressure, no expectation.
-    I just wanted a nice way to be honest.
+    Not every day has to be perfect.
+    Keep learning, keep growing, and let
+    the next chapter surprise you.
   </p>
 
   <button class="primary" id="reveal">
-    Tell me <span>♡</span>
+    A message for you <span>✦</span>
   </button>
 
 </section>
 
-
-<!-- ================= ENVELOPE ================= -->
-
 <section class="envelopeSection" id="envelopeSection">
 
-  <p class="eyebrow">
-    04 • one last little thing
-  </p>
+  <p class="eyebrow">04 • a message from the night</p>
 
-  <h2>
-    Open it when you're ready.
-  </h2>
+  <h2>Open it when you're ready.</h2>
 
-  <div
-    class="envelope-wrap"
-    id="envelope"
-    tabindex="0"
-    role="button"
-    aria-label="Open secret envelope"
-  >
+  <div class="envelope-wrap"
+       id="envelope"
+       tabindex="0"
+       role="button"
+       aria-label="Open the message">
 
     <div class="envelope">
-
       <div class="env-back"></div>
 
       <div class="letter-paper">
-        <b>For Ritika ♡</b>
-        <span>
-          there's a little secret inside...
-        </span>
+        <b>From Alone Guy ☾</b>
+        <span>A little reminder for you...</span>
       </div>
 
       <div class="pocket"></div>
-
       <div class="flap"></div>
-
-      <div class="seal">
-        ♡
-      </div>
-
+      <div class="seal">☾</div>
     </div>
 
   </div>
 
-  <p class="tapHint" id="tapHint">
-    tap the envelope ♡
-  </p>
+  <p class="tapHint" id="tapHint">tap the envelope ☾</p>
 
 </section>
 
-
-<!-- ================= CONFESSION ================= -->
-
 <section class="confession" id="confession">
 
-  <div class="bigHeart">
-    ♥
-  </div>
+  <div class="bigHeart">✦</div>
 
-  <p class="eyebrow">
-    05 • The secret is...
-  </p>
+  <p class="eyebrow">05 • remember this</p>
 
   <h2>
-    Ritika,<br>
-    <em>I like you.</em> ♡
+    To my future self,<br>
+    <em>keep shining.</em> ☾
   </h2>
 
   <p class="copy center">
-    I've wanted to say it for a while,
-    so I finally did.
+    I don't need to be the loudest person
+    in the room. I can grow at my own pace
+    and still make something meaningful
+    out of my life.
   </p>
 
   <div class="gentle">
-
-    <strong>
-      You don't have to feel the same.
-    </strong>
-
+    <strong>One day at a time.</strong>
     <p>
-      You don't owe me an answer, a yes,
-      or anything at all. Whatever you feel
-      is completely okay. I just wanted you to know.
+      Protect your peace, follow your dreams,
+      enjoy your own company, and stay open
+      to new friendships and unexpected happiness.
     </p>
-
   </div>
 
   <div class="choices">
-
-    <button id="talk">
-      😊 I'd like to talk
-    </button>
-
-    <button id="later">
-      🌙 Maybe another time
-    </button>
-
+    <button id="talk">🌌 Explore my world</button>
+    <button id="later">☾ Stay a little longer</button>
   </div>
 
-  <p class="sign">
-    — from someone who thinks you're pretty special
-  </p>
+  <p class="sign">— Alone Guy</p>
 
   <button class="restart" id="restart">
-    ↻ read it again
+    ↻ Start the journey again
   </button>
 
 </section>
 
 </main>
 
-
-<!-- ================= MODAL ================= -->
-
 <div class="modal" id="modal">
-
   <div class="modalCard">
-
-    <button class="close" id="close">
-      ×
-    </button>
-
-    <div class="modalHeart">
-      ♡
-    </div>
-
+    <button class="close" id="close">×</button>
+    <div class="modalHeart">☾</div>
     <p id="modalText"></p>
-
   </div>
-
 </div>
-
-
-<!-- ================= TOAST ================= -->
 
 <div class="toast" id="toast"></div>
 
+<!-- MUSIC PLAYER -->
+<div class="music-player">
 
-<!-- ================= MUSIC ================= -->
+  <div class="music-heading">
+    <strong>☾ ALONE GUY</strong>
+    <span>🎧</span>
+  </div>
 
-<audio id="bgMusic" loop>
-  <source src="song.mp3" type="audio/mpeg">
-</audio>
+  <select id="songSelect" aria-label="Choose a song">
+    <option value="music/song1.mp3">Song 1</option>
+    <option value="music/song2.mp3">Song 2</option>
+    <option value="music/song3.mp3">Song 3</option>
+  </select>
 
-<button id="musicBtn" class="music-btn">
-  🎵 Play Music
-</button>
+  <audio id="bgMusic" preload="metadata"></audio>
 
+  <div class="music-controls">
+    <button id="prevSong" type="button">⏮ Previous</button>
+    <button id="musicBtn" type="button">▶ Play</button>
+    <button id="nextSong" type="button">Next ⏭</button>
+  </div>
 
-<!-- JAVASCRIPT -->
+  <p class="music-status" id="musicStatus" aria-live="polite">
+    Choose a song and tap Play
+  </p>
+
+</div>
 
 <script src="script.js"></script>
+
+<script>
+/* PERSONAL MUSIC PLAYLIST */
+(() => {
+  const songs = [
+    { name: "Song 1", src: "music/song1.mp3" },
+    { name: "Song 2", src: "music/song2.mp3" },
+    { name: "Song 3", src: "music/song3.mp3" }
+  ];
+
+  const player = document.getElementById("bgMusic");
+  const select = document.getElementById("songSelect");
+  const playBtn = document.getElementById("musicBtn");
+  const prevBtn = document.getElementById("prevSong");
+  const nextBtn = document.getElementById("nextSong");
+  const status = document.getElementById("musicStatus");
+
+  let current = 0;
+
+  function loadSong(index, autoplay = false) {
+    current = (index + songs.length) % songs.length;
+    select.selectedIndex = current;
+    player.src = songs[current].src;
+    status.textContent = songs[current].name;
+
+    if (autoplay) {
+      player.play().catch(() => {
+        status.textContent =
+          "Tap Play to start " + songs[current].name;
+      });
+    } else {
+      playBtn.textContent = "▶ Play";
+    }
+  }
+
+  playBtn.addEventListener("click", () => {
+    if (player.paused) {
+      if (!player.src) loadSong(current);
+      player.play().then(() => {
+        playBtn.textContent = "⏸ Pause";
+      }).catch(() => {
+        status.textContent =
+          "Couldn't play this file. Check its filename.";
+      });
+    } else {
+      player.pause();
+    }
+  });
+
+  player.addEventListener("play", () => {
+    playBtn.textContent = "⏸ Pause";
+  });
+
+  player.addEventListener("pause", () => {
+    playBtn.textContent = "▶ Play";
+  });
+
+  player.addEventListener("ended", () => {
+    loadSong(current + 1, true);
+  });
+
+  player.addEventListener("error", () => {
+    status.textContent =
+      "Song not found. Check the music folder and filename.";
+  });
+
+  select.addEventListener("change", () => {
+    loadSong(select.selectedIndex, true);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    loadSong(current - 1, true);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    loadSong(current + 1, true);
+  });
+
+  loadSong(0);
+})();
+</script>
 
 </body>
 </html>
