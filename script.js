@@ -1,11 +1,15 @@
+// =====================================
+// ALONE GUY 🌙
+// Complete Website JavaScript
+// =====================================
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
 
-// ===============================
-// SMOOTH SCROLL / REVEAL
-// ===============================
+// =====================================
+// SMOOTH SCROLL
+// =====================================
 
 function reveal(element) {
   if (!element) return;
@@ -16,84 +20,97 @@ function reveal(element) {
   });
 }
 
+const startButton = $("#start");
 
-// Start button
-$("#start").onclick = () => {
-  reveal($("#story"));
-};
+if (startButton) {
+  startButton.addEventListener("click", () => {
+    reveal($("#story"));
+  });
+}
 
-
-// Next buttons
 $$(".next").forEach((button) => {
-  button.onclick = () => {
-    const target = document.getElementById(button.dataset.target);
+  button.addEventListener("click", () => {
+    const target = document.getElementById(
+      button.dataset.target
+    );
 
-    if (target) reveal(target);
-  };
+    reveal(target);
+  });
 });
 
 
-// ===============================
-// TAP CARDS / MODAL
-// ===============================
+// =====================================
+// NOTE CARDS / MODAL
+// =====================================
 
 const modal = $("#modal");
 const modalText = $("#modalText");
+const closeButton = $("#close");
 
-$$(".note").forEach((card) => {
-  card.onclick = () => {
-    modalText.textContent = card.dataset.note || "";
-    modal.classList.add("open");
-  };
-});
+if (modal && modalText) {
+  $$(".note").forEach((card) => {
+    card.addEventListener("click", () => {
+      modalText.textContent =
+        card.dataset.note || "Some thoughts are better left quiet. 🌙";
 
-function closeModal() {
-  modal.classList.remove("open");
+      modal.classList.add("open");
+    });
+  });
+
+  function closeModal() {
+    modal.classList.remove("open");
+  }
+
+  if (closeButton) {
+    closeButton.addEventListener("click", closeModal);
+  }
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeModal();
+  });
 }
 
-$("#close").onclick = closeModal;
 
-modal.onclick = (event) => {
-  if (event.target === modal) closeModal();
-};
+// =====================================
+// REVEAL BUTTON
+// =====================================
 
-document.onkeydown = (event) => {
-  if (event.key === "Escape") closeModal();
-};
+const revealButton = $("#reveal");
 
+if (revealButton) {
+  revealButton.addEventListener("click", () => {
+    document.body.classList.add("transitioning");
 
-// ===============================
-// CUTE TRANSITION
-// ===============================
-
-$("#reveal").onclick = () => {
-  document.body.classList.add("transitioning");
-
-  setTimeout(() => {
-    reveal($("#envelopeSection"));
-    document.body.classList.remove("transitioning");
-  }, 380);
-};
+    setTimeout(() => {
+      reveal($("#envelopeSection"));
+      document.body.classList.remove("transitioning");
+    }, 380);
+  });
+}
 
 
-// ===============================
-// ANIMATED ENVELOPE
-// ===============================
+// =====================================
+// OPTIONAL ENVELOPE
+// =====================================
 
 let envelopeOpened = false;
 
 function openEnvelope() {
-  if (envelopeOpened) return;
+  const envelope = $("#envelope");
+
+  if (!envelope || envelopeOpened) return;
 
   envelopeOpened = true;
-
-  const envelope = $("#envelope");
-  const hint = $("#tapHint");
-
   envelope.classList.add("open");
 
+  const hint = $("#tapHint");
+
   if (hint) {
-    hint.textContent = "the secret is opening... ♡";
+    hint.textContent = "A quiet thought, just for you. 🌙";
   }
 
   setTimeout(() => {
@@ -101,62 +118,73 @@ function openEnvelope() {
   }, 1500);
 }
 
-$("#envelope").onclick = openEnvelope;
+const envelope = $("#envelope");
 
-$("#envelope").onkeydown = (event) => {
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    openEnvelope();
-  }
-};
+if (envelope) {
+  envelope.addEventListener("click", openEnvelope);
+
+  envelope.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openEnvelope();
+    }
+  });
+}
 
 
-// ===============================
-// FLOATING HEARTS
-// ===============================
+// =====================================
+// FLOATING STARS ✨
+// =====================================
 
-const heartLayer = $("#floatingHearts");
+const particleLayer =
+  $("#floatingParticles") || $("#floatingHearts");
 
-function spawnHeart() {
-  if (document.hidden || !heartLayer) return;
+function spawnParticle() {
+  if (document.hidden || !particleLayer) return;
 
-  const heart = document.createElement("span");
+  const particle = document.createElement("span");
 
-  heart.className = "floating-heart";
-  heart.textContent = Math.random() > 0.2 ? "♡" : "♥";
-  heart.style.left = Math.random() * 100 + "%";
-  heart.style.fontSize = 10 + Math.random() * 16 + "px";
+  particle.className = "floating-heart";
+  particle.textContent =
+    Math.random() > 0.3 ? "✦" : "·";
 
-  heart.style.setProperty(
+  particle.style.left = Math.random() * 100 + "%";
+  particle.style.fontSize =
+    10 + Math.random() * 14 + "px";
+
+  particle.style.setProperty(
     "--duration",
     6 + Math.random() * 5 + "s"
   );
 
-  heart.style.setProperty(
+  particle.style.setProperty(
     "--drift",
-    (-60 + Math.random() * 120) + "px"
+    (-40 + Math.random() * 80) + "px"
   );
 
-  heartLayer.appendChild(heart);
+  particleLayer.appendChild(particle);
 
-  setTimeout(() => heart.remove(), 12000);
+  setTimeout(() => particle.remove(), 12000);
 }
 
-setInterval(spawnHeart, 700);
+if (particleLayer) {
+  for (let i = 0; i < 6; i++) {
+    setTimeout(spawnParticle, i * 300);
+  }
 
-for (let i = 0; i < 8; i++) {
-  setTimeout(spawnHeart, i * 240);
+  setInterval(spawnParticle, 1000);
 }
 
 
-// ===============================
-// FINAL BUTTONS + INSTAGRAM 📸
-// ===============================
+// =====================================
+// TOAST MESSAGES
+// =====================================
 
 let toastTimer;
 
 function showToast(message) {
   const toast = $("#toast");
+
   if (!toast) return;
 
   toast.textContent = message;
@@ -170,67 +198,174 @@ function showToast(message) {
 }
 
 
-// "I'd like to talk" — open your Instagram
-$("#talk").onclick = () => {
-  window.open(
-    "https://www.instagram.com/Sushant.x.822/",
-    "_blank",
-    "noopener,noreferrer"
-  );
-};
+// =====================================
+// INSTAGRAM BUTTON 📸
+// =====================================
 
+const talkButton = $("#talk");
 
-// "Maybe another time"
-$("#later").onclick = () => {
-  showToast(
-    "Take your time. Whatever you feel is okay. 🌙"
-  );
-};
-
-
-// ===============================
-// RESTART
-// ===============================
-
-$("#restart").onclick = () => {
-  envelopeOpened = false;
-
-  const envelope = $("#envelope");
-  const hint = $("#tapHint");
-
-  envelope.classList.remove("open");
-
-  if (hint) {
-    hint.textContent = "tap the envelope ♡";
-  }
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+if (talkButton) {
+  talkButton.addEventListener("click", () => {
+    window.open(
+      "https://www.instagram.com/Sushant.x.822/",
+      "_blank",
+      "noopener,noreferrer"
+    );
   });
-};
+}
 
 
-// ===============================
+// =====================================
+// LATER BUTTON 🌙
+// =====================================
+
+const laterButton = $("#later");
+
+if (laterButton) {
+  laterButton.addEventListener("click", () => {
+    showToast("No rush. Take life at your own pace. 🌙");
+  });
+}
+
+
+// =====================================
+// RESTART BUTTON 🔄
+// =====================================
+
+const restartButton = $("#restart");
+
+if (restartButton) {
+  restartButton.addEventListener("click", () => {
+    envelopeOpened = false;
+
+    const currentEnvelope = $("#envelope");
+    const hint = $("#tapHint");
+
+    if (currentEnvelope) {
+      currentEnvelope.classList.remove("open");
+    }
+
+    if (hint) {
+      hint.textContent = "tap the envelope";
+    }
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+}
+
+
+// =====================================
 // MUSIC PLAYER 🎵
-// ===============================
+// =====================================
 
 const music = $("#bgMusic");
 const musicBtn = $("#musicBtn");
+const songSelect = $("#songSelect");
+const nextSongBtn = $("#nextSong");
+const prevSongBtn = $("#prevSong");
 
-if (music && musicBtn) {
-  musicBtn.onclick = async () => {
-    if (music.paused) {
-      try {
-        await music.play();
-        musicBtn.textContent = "⏸️ Pause Music";
-      } catch (error) {
-        console.error("Music error:", error);
-        musicBtn.textContent = "🎵 Tap to Play";
+// Change these names and paths to match your files.
+const playlist = [
+  {
+    name: "Midnight",
+    src: "music/song1.mp3"
+  },
+  {
+    name: "Lonely Nights",
+    src: "music/song2.mp3"
+  },
+  {
+    name: "Peaceful Mind",
+    src: "music/song3.mp3"
+  }
+];
+
+let currentSong = 0;
+
+function loadSong(index, autoplay = false) {
+  if (!music || playlist.length === 0) return;
+
+  currentSong =
+    (index + playlist.length) % playlist.length;
+
+  music.src = playlist[currentSong].src;
+  music.load();
+
+  if (songSelect) {
+    songSelect.value = String(currentSong);
+  }
+
+  if (autoplay) {
+    music.play()
+      .then(() => {
+        if (musicBtn) {
+          musicBtn.textContent = "⏸️ Pause Music";
+        }
+      })
+      .catch(() => {
+        showToast("Tap Play Music to start listening. 🎵");
+      });
+  }
+}
+
+if (music) {
+  if (songSelect) {
+    songSelect.innerHTML = "";
+
+    playlist.forEach((song, index) => {
+      const option = document.createElement("option");
+
+      option.value = String(index);
+      option.textContent = song.name;
+
+      songSelect.appendChild(option);
+    });
+
+    songSelect.addEventListener("change", () => {
+      loadSong(Number(songSelect.value), true);
+    });
+  }
+
+  if (musicBtn) {
+    musicBtn.addEventListener("click", async () => {
+      if (music.paused) {
+        try {
+          await music.play();
+        } catch (error) {
+          showToast("Check your music file and try again. 🎵");
+        }
+      } else {
+        music.pause();
       }
-    } else {
-      music.pause();
-      musicBtn.textContent = "🎵 Play Music";
-    }
-  };
+    });
+  }
+
+  if (nextSongBtn) {
+    nextSongBtn.addEventListener("click", () => {
+      loadSong(currentSong + 1, true);
+    });
+  }
+
+  if (prevSongBtn) {
+    prevSongBtn.addEventListener("click", () => {
+      loadSong(currentSong - 1, true);
+    });
+  }
+
+  music.addEventListener("play", () => {
+    if (musicBtn) musicBtn.textContent = "⏸️ Pause Music";
+  });
+
+  music.addEventListener("pause", () => {
+    if (musicBtn) musicBtn.textContent = "🎵 Play Music";
+  });
+
+  music.addEventListener("ended", () => {
+    loadSong(currentSong + 1, true);
+  });
+
+  loadSong(0);
 }
