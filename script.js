@@ -1,8 +1,9 @@
 
-// =====================================
-// ALONE GUY 🌙
-// Complete Website JavaScript
-// =====================================
+ // =====================================
+ // ALONE GUY 🌙
+ // Complete Website JavaScript
+ // Music player is handled by index.html
+ // =====================================
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
@@ -30,10 +31,7 @@ if (startButton) {
 
 $$(".next").forEach((button) => {
   button.addEventListener("click", () => {
-    const target = document.getElementById(
-      button.dataset.target
-    );
-
+    const target = document.getElementById(button.dataset.target);
     reveal(target);
   });
 });
@@ -92,7 +90,7 @@ if (revealButton) {
 }
 
 // =====================================
-// OPTIONAL ENVELOPE
+// ENVELOPE ✉️
 // =====================================
 
 let envelopeOpened = false;
@@ -142,12 +140,10 @@ function spawnParticle() {
   const particle = document.createElement("span");
 
   particle.className = "floating-heart";
-  particle.textContent =
-    Math.random() > 0.3 ? "✦" : "·";
+  particle.textContent = Math.random() > 0.3 ? "✦" : "·";
 
   particle.style.left = Math.random() * 100 + "%";
-  particle.style.fontSize =
-    10 + Math.random() * 14 + "px";
+  particle.style.fontSize = 10 + Math.random() * 14 + "px";
 
   particle.style.setProperty(
     "--duration",
@@ -239,7 +235,7 @@ if (restartButton) {
     }
 
     if (hint) {
-      hint.textContent = "tap the envelope";
+      hint.textContent = "tap the envelope ☾";
     }
 
     window.scrollTo({
@@ -252,143 +248,8 @@ if (restartButton) {
 // =====================================
 // MUSIC PLAYER 🎵
 // =====================================
-
-const music = $("#bgMusic");
-const musicBtn = $("#musicBtn");
-const songSelect = $("#songSelect");
-const nextSongBtn = $("#nextSong");
-const prevSongBtn = $("#prevSong");
-const musicStatus = $("#musicStatus");
-
-// MP3 files are assumed to be in the repository root.
-const playlist = [
-  { name: "Midnight", src: "song.mp3" },
-  { name: "Lonely Nights", src: "song1.mp3" },
-  { name: "Peaceful Mind", src: "song2.mp3" },
-  { name: "Dreamy Nights", src: "song3.mp3" }
-];
-
-let currentSong = 0;
-
-function loadSong(index, autoplay = false) {
-  if (!music || playlist.length === 0) return;
-
-  currentSong =
-    (index + playlist.length) % playlist.length;
-
-  music.pause();
-  music.src = playlist[currentSong].src;
-  music.load();
-
-  if (songSelect) {
-    songSelect.selectedIndex = currentSong;
-  }
-
-  if (musicBtn) {
-    musicBtn.textContent = "🎵 Play Music";
-  }
-
-  if (musicStatus) {
-    musicStatus.textContent =
-      playlist[currentSong].name + " selected";
-  }
-
-  if (autoplay) {
-    playSong();
-  }
-}
-
-async function playSong() {
-  if (!music) return;
-
-  try {
-    await music.play();
-  } catch (error) {
-    if (musicStatus) {
-      musicStatus.textContent =
-        "Couldn't play the song. Check the MP3 filename.";
-    }
-
-    showToast("Check your music file and try again. 🎵");
-  }
-}
-
-if (music) {
-  // Populate the song dropdown.
-  if (songSelect) {
-    songSelect.innerHTML = "";
-
-    playlist.forEach((song) => {
-      const option = document.createElement("option");
-
-      option.value = song.src;
-      option.textContent = song.name;
-
-      songSelect.appendChild(option);
-    });
-
-    songSelect.addEventListener("change", () => {
-      loadSong(songSelect.selectedIndex, true);
-    });
-  }
-
-  // Play / Pause.
-  if (musicBtn) {
-    musicBtn.addEventListener("click", () => {
-      if (music.paused) {
-        playSong();
-      } else {
-        music.pause();
-      }
-    });
-  }
-
-  // Next song.
-  if (nextSongBtn) {
-    nextSongBtn.addEventListener("click", () => {
-      loadSong(currentSong + 1, true);
-    });
-  }
-
-  // Previous song.
-  if (prevSongBtn) {
-    prevSongBtn.addEventListener("click", () => {
-      loadSong(currentSong - 1, true);
-    });
-  }
-
-  // Update the player when playback starts.
-  music.addEventListener("play", () => {
-    if (musicBtn) {
-      musicBtn.textContent = "⏸️ Pause Music";
-    }
-
-    if (musicStatus) {
-      musicStatus.textContent =
-        "Playing " + playlist[currentSong].name;
-    }
-  });
-
-  // Update the button when paused.
-  music.addEventListener("pause", () => {
-    if (musicBtn) {
-      musicBtn.textContent = "🎵 Play Music";
-    }
-  });
-
-  // Automatically play the next song.
-  music.addEventListener("ended", () => {
-    loadSong(currentSong + 1, true);
-  });
-
-  // Show an error if an MP3 cannot be loaded.
-  music.addEventListener("error", () => {
-    if (musicStatus) {
-      musicStatus.textContent =
-        "Song not found. Check the MP3 filename on GitHub.";
-    }
-  });
-
-  // Load the first song without autoplay.
-  loadSong(0);
-}
+// IMPORTANT:
+// The 29-song playlist and all music controls
+// are managed by the music script in index.html.
+// Do not add another music handler here.
+// =====================================
