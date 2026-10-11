@@ -1,3 +1,4 @@
+
 // =====================================
 // ALONE GUY 🌙
 // Complete Website JavaScript
@@ -5,7 +6,6 @@
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
-
 
 // =====================================
 // SMOOTH SCROLL
@@ -38,7 +38,6 @@ $$(".next").forEach((button) => {
   });
 });
 
-
 // =====================================
 // NOTE CARDS / MODAL
 // =====================================
@@ -51,7 +50,8 @@ if (modal && modalText) {
   $$(".note").forEach((card) => {
     card.addEventListener("click", () => {
       modalText.textContent =
-        card.dataset.note || "Some thoughts are better left quiet. 🌙";
+        card.dataset.note ||
+        "Some thoughts are better left quiet. 🌙";
 
       modal.classList.add("open");
     });
@@ -74,7 +74,6 @@ if (modal && modalText) {
   });
 }
 
-
 // =====================================
 // REVEAL BUTTON
 // =====================================
@@ -91,7 +90,6 @@ if (revealButton) {
     }, 380);
   });
 }
-
 
 // =====================================
 // OPTIONAL ENVELOPE
@@ -130,7 +128,6 @@ if (envelope) {
     }
   });
 }
-
 
 // =====================================
 // FLOATING STARS ✨
@@ -175,7 +172,6 @@ if (particleLayer) {
   setInterval(spawnParticle, 1000);
 }
 
-
 // =====================================
 // TOAST MESSAGES
 // =====================================
@@ -197,7 +193,6 @@ function showToast(message) {
   }, 2600);
 }
 
-
 // =====================================
 // INSTAGRAM BUTTON 📸
 // =====================================
@@ -214,7 +209,6 @@ if (talkButton) {
   });
 }
 
-
 // =====================================
 // LATER BUTTON 🌙
 // =====================================
@@ -226,7 +220,6 @@ if (laterButton) {
     showToast("No rush. Take life at your own pace. 🌙");
   });
 }
-
 
 // =====================================
 // RESTART BUTTON 🔄
@@ -256,7 +249,6 @@ if (restartButton) {
   });
 }
 
-
 // =====================================
 // MUSIC PLAYER 🎵
 // =====================================
@@ -266,21 +258,14 @@ const musicBtn = $("#musicBtn");
 const songSelect = $("#songSelect");
 const nextSongBtn = $("#nextSong");
 const prevSongBtn = $("#prevSong");
+const musicStatus = $("#musicStatus");
 
-// Change these names and paths to match your files.
+// MP3 files are assumed to be in the repository root.
 const playlist = [
-  {
-    name: "Midnight",
-    src: "music/song1.mp3"
-  },
-  {
-    name: "Lonely Nights",
-    src: "music/song2.mp3"
-  },
-  {
-    name: "Peaceful Mind",
-    src: "music/song3.mp3"
-  }
+  { name: "Midnight", src: "song.mp3" },
+  { name: "Lonely Nights", src: "song1.mp3" },
+  { name: "Peaceful Mind", src: "song2.mp3" },
+  { name: "Dreamy Nights", src: "song3.mp3" }
 ];
 
 let currentSong = 0;
@@ -291,81 +276,119 @@ function loadSong(index, autoplay = false) {
   currentSong =
     (index + playlist.length) % playlist.length;
 
+  music.pause();
   music.src = playlist[currentSong].src;
   music.load();
 
   if (songSelect) {
-    songSelect.value = String(currentSong);
+    songSelect.selectedIndex = currentSong;
+  }
+
+  if (musicBtn) {
+    musicBtn.textContent = "🎵 Play Music";
+  }
+
+  if (musicStatus) {
+    musicStatus.textContent =
+      playlist[currentSong].name + " selected";
   }
 
   if (autoplay) {
-    music.play()
-      .then(() => {
-        if (musicBtn) {
-          musicBtn.textContent = "⏸️ Pause Music";
-        }
-      })
-      .catch(() => {
-        showToast("Tap Play Music to start listening. 🎵");
-      });
+    playSong();
+  }
+}
+
+async function playSong() {
+  if (!music) return;
+
+  try {
+    await music.play();
+  } catch (error) {
+    if (musicStatus) {
+      musicStatus.textContent =
+        "Couldn't play the song. Check the MP3 filename.";
+    }
+
+    showToast("Check your music file and try again. 🎵");
   }
 }
 
 if (music) {
+  // Populate the song dropdown.
   if (songSelect) {
     songSelect.innerHTML = "";
 
-    playlist.forEach((song, index) => {
+    playlist.forEach((song) => {
       const option = document.createElement("option");
 
-      option.value = String(index);
+      option.value = song.src;
       option.textContent = song.name;
 
       songSelect.appendChild(option);
     });
 
     songSelect.addEventListener("change", () => {
-      loadSong(Number(songSelect.value), true);
+      loadSong(songSelect.selectedIndex, true);
     });
   }
 
+  // Play / Pause.
   if (musicBtn) {
-    musicBtn.addEventListener("click", async () => {
+    musicBtn.addEventListener("click", () => {
       if (music.paused) {
-        try {
-          await music.play();
-        } catch (error) {
-          showToast("Check your music file and try again. 🎵");
-        }
+        playSong();
       } else {
         music.pause();
       }
     });
   }
 
+  // Next song.
   if (nextSongBtn) {
     nextSongBtn.addEventListener("click", () => {
       loadSong(currentSong + 1, true);
     });
   }
 
+  // Previous song.
   if (prevSongBtn) {
     prevSongBtn.addEventListener("click", () => {
       loadSong(currentSong - 1, true);
     });
   }
 
+  // Update the player when playback starts.
   music.addEventListener("play", () => {
-    if (musicBtn) musicBtn.textContent = "⏸️ Pause Music";
+    if (musicBtn) {
+      musicBtn.textContent = "⏸️ Pause Music";
+    }
+
+    if (musicStatus) {
+      musicStatus.textContent =
+        "Playing " + playlist[currentSong].name;
+    }
   });
 
+  // Update the button when paused.
   music.addEventListener("pause", () => {
-    if (musicBtn) musicBtn.textContent = "🎵 Play Music";
+    if (musicBtn) {
+      musicBtn.textContent = "🎵 Play Music";
+    }
   });
 
+  // Automatically play the next song.
   music.addEventListener("ended", () => {
     loadSong(currentSong + 1, true);
   });
 
+  // Show an error if an MP3 cannot be loaded.
+  music.addEventListener("error", () => {
+    if (musicStatus) {
+      musicStatus.textContent =
+        "Song not found. Check the MP3 filename on GitHub.";
+    }
+  });
+
+  // Load the first song without autoplay.
   loadSong(0);
 }
