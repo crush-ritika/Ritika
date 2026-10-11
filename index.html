@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -26,6 +27,7 @@
 body {
   background: var(--bg);
   color: var(--text);
+  padding-bottom: 175px;
 }
 
 header {
@@ -88,13 +90,13 @@ h1 em, h2 em {
 
 .music-player {
   position: fixed;
-  z-index: 100;
-  bottom: 14px;
+  z-index: 1000;
+  bottom: 12px;
   left: 12px;
   right: 12px;
   max-width: 440px;
   margin: auto;
-  padding: 15px;
+  padding: 12px;
   box-shadow: 0 8px 30px #0009;
 }
 
@@ -103,7 +105,7 @@ h1 em, h2 em {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .music-heading strong {
@@ -122,7 +124,7 @@ h1 em, h2 em {
 
 .music-player select {
   width: 100%;
-  margin-bottom: 9px;
+  margin-bottom: 8px;
 }
 
 .music-controls {
@@ -132,6 +134,7 @@ h1 em, h2 em {
 
 .music-controls button {
   flex: 1;
+  min-width: 0;
 }
 
 .music-player audio {
@@ -141,17 +144,13 @@ h1 em, h2 em {
 .music-status {
   font-size: 12px;
   color: var(--muted);
-  margin: 9px 0 0;
+  margin: 8px 0 0;
 }
 
 .music-player button:focus-visible,
 .music-player select:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-}
-
-body {
-  padding-bottom: 145px;
 }
 </style>
 </head>
@@ -179,7 +178,6 @@ body {
     <em>Alone Guy</em> ☾
   </h1>
 
-  <!-- Replace my-photo.jpg with your own photo filename -->
   <div class="photo-frame">
     <img src="my-photo.jpg"
          alt="Alone Guy"
@@ -380,9 +378,10 @@ body {
   </div>
 
   <select id="songSelect" aria-label="Choose a song">
-    <option value="music/song1.mp3">Song 1</option>
-    <option value="music/song2.mp3">Song 2</option>
-    <option value="music/song3.mp3">Song 3</option>
+    <option value="song.mp3">Song 0</option>
+    <option value="song1.mp3">Song 1</option>
+    <option value="song2.mp3">Song 2</option>
+    <option value="song3.mp3">Song 3</option>
   </select>
 
   <audio id="bgMusic" preload="metadata"></audio>
@@ -399,15 +398,17 @@ body {
 
 </div>
 
+<!-- Keep this file for your existing website animations and interactions -->
 <script src="script.js"></script>
 
+<!-- MUSIC PLAYLIST -->
 <script>
-/* PERSONAL MUSIC PLAYLIST */
 (() => {
   const songs = [
-    { name: "Song 1", src: "music/song1.mp3" },
-    { name: "Song 2", src: "music/song2.mp3" },
-    { name: "Song 3", src: "music/song3.mp3" }
+    { name: "Song 0", src: "song.mp3" },
+    { name: "Song 1", src: "song1.mp3" },
+    { name: "Song 2", src: "song2.mp3" },
+    { name: "Song 3", src: "song3.mp3" }
   ];
 
   const player = document.getElementById("bgMusic");
@@ -419,31 +420,30 @@ body {
 
   let current = 0;
 
-  function loadSong(index, autoplay = false) {
+  function loadSong(index) {
     current = (index + songs.length) % songs.length;
-    select.selectedIndex = current;
-    player.src = songs[current].src;
-    status.textContent = songs[current].name;
 
-    if (autoplay) {
-      player.play().catch(() => {
-        status.textContent =
-          "Tap Play to start " + songs[current].name;
-      });
-    } else {
-      playBtn.textContent = "▶ Play";
+    player.pause();
+    player.src = songs[current].src;
+    player.load();
+
+    select.selectedIndex = current;
+    status.textContent = songs[current].name + " selected";
+    playBtn.textContent = "▶ Play";
+  }
+
+  async function playSong() {
+    try {
+      await player.play();
+    } catch (error) {
+      status.textContent =
+        "Unable to play. Check the MP3 filename or file.";
     }
   }
 
   playBtn.addEventListener("click", () => {
     if (player.paused) {
-      if (!player.src) loadSong(current);
-      player.play().then(() => {
-        playBtn.textContent = "⏸ Pause";
-      }).catch(() => {
-        status.textContent =
-          "Couldn't play this file. Check its filename.";
-      });
+      playSong();
     } else {
       player.pause();
     }
@@ -451,6 +451,7 @@ body {
 
   player.addEventListener("play", () => {
     playBtn.textContent = "⏸ Pause";
+    status.textContent = "Playing " + songs[current].name;
   });
 
   player.addEventListener("pause", () => {
@@ -458,24 +459,28 @@ body {
   });
 
   player.addEventListener("ended", () => {
-    loadSong(current + 1, true);
+    loadSong(current + 1);
+    playSong();
   });
 
   player.addEventListener("error", () => {
     status.textContent =
-      "Song not found. Check the music folder and filename.";
+      "Song file not found. Check the MP3 filename on GitHub.";
   });
 
   select.addEventListener("change", () => {
-    loadSong(select.selectedIndex, true);
+    loadSong(select.selectedIndex);
+    playSong();
   });
 
   prevBtn.addEventListener("click", () => {
-    loadSong(current - 1, true);
+    loadSong(current - 1);
+    playSong();
   });
 
   nextBtn.addEventListener("click", () => {
-    loadSong(current + 1, true);
+    loadSong(current + 1);
+    playSong();
   });
 
   loadSong(0);
