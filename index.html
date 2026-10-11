@@ -5,13 +5,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#08090d">
-
 <title>Alone Guy — My Little World</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="style.css">
 
 <style>
@@ -30,30 +28,17 @@ body {
   padding-bottom: 175px;
 }
 
-header {
-  background: rgba(8,9,13,.85);
-}
-
-.logo {
-  color: var(--accent);
-}
+header { background: rgba(8,9,13,.85); }
+.logo { color: var(--accent); }
 
 .hero, .story, .question,
 .envelopeSection, .confession {
   background-color: var(--bg);
 }
 
-.blush {
-  background: #10131b !important;
-}
-
-.eyebrow, .num, .tap, .swipe {
-  color: var(--muted);
-}
-
-h1 em, h2 em {
-  color: var(--accent);
-}
+.blush { background: #10131b !important; }
+.eyebrow, .num, .tap, .swipe { color: var(--muted); }
+h1 em, h2 em { color: var(--accent); }
 
 .photo-frame {
   width: min(75%, 290px);
@@ -76,17 +61,14 @@ h1 em, h2 em {
   color: #08090d;
 }
 
-.note, .gentle, .modalCard,
-.music-player {
+.note, .gentle, .modalCard, .music-player {
   background: var(--panel);
   color: var(--text);
   border: 1px solid #292f3d;
   border-radius: 16px;
 }
 
-.note {
-  padding: 18px;
-}
+.note { padding: 18px; }
 
 .music-player {
   position: fixed;
@@ -135,11 +117,10 @@ h1 em, h2 em {
 .music-controls button {
   flex: 1;
   min-width: 0;
+  cursor: pointer;
 }
 
-.music-player audio {
-  display: none;
-}
+.music-player audio { display: none; }
 
 .music-status {
   font-size: 12px;
@@ -152,13 +133,16 @@ h1 em, h2 em {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
+
+.music-player button:disabled {
+  opacity: .6;
+}
 </style>
 </head>
 
 <body>
 
-<div class="floating-hearts" id="floatingHearts"
-     aria-hidden="true"></div>
+<div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
 
 <header>
   <a href="#home" class="logo">☾</a>
@@ -168,19 +152,13 @@ h1 em, h2 em {
 <main>
 
 <section class="hero" id="home">
-
   <div class="orbit"><b>☾</b></div>
-
   <p class="eyebrow">A quiet corner of the universe</p>
 
-  <h1>
-    Welcome to<br>
-    <em>Alone Guy</em> ☾
-  </h1>
+  <h1>Welcome to<br><em>Alone Guy</em> ☾</h1>
 
   <div class="photo-frame">
-    <img src="my-photo.jpg"
-         alt="Alone Guy"
+    <img src="my-photo.jpg" alt="Alone Guy"
          onerror="this.style.display='none'">
   </div>
 
@@ -194,18 +172,13 @@ h1 em, h2 em {
   </button>
 
   <small class="swipe">take it slow ↓</small>
-
 </section>
 
 <section class="story blush" id="story">
-
   <small class="num">01</small>
   <p class="eyebrow">Behind the silence</p>
 
-  <h2>
-    Not every quiet person<br>
-    <em>has nothing to say.</em>
-  </h2>
+  <h2>Not every quiet person<br><em>has nothing to say.</em></h2>
 
   <p class="copy">
     Some thoughts are hard to explain.
@@ -217,21 +190,15 @@ h1 em, h2 em {
   <button class="link next" data-target="little">
     KEEP EXPLORING →
   </button>
-
 </section>
 
 <section class="story" id="little">
-
   <small class="num">02</small>
   <p class="eyebrow">Pieces of my world</p>
 
-  <h2>
-    Little things<br>
-    <em>that feel like me.</em>
-  </h2>
+  <h2>Little things<br><em>that feel like me.</em></h2>
 
   <div class="notes">
-
     <button class="note"
       data-note="The world gets quiet, but the mind keeps telling stories.">
       <span>🌙</span>
@@ -252,7 +219,6 @@ h1 em, h2 em {
       <strong>My own space</strong>
       <small>peace over noise</small>
     </button>
-
   </div>
 
   <p class="tap">tap a card ☾</p>
@@ -260,19 +226,13 @@ h1 em, h2 em {
   <button class="link next" data-target="question">
     ONE LAST THING →
   </button>
-
 </section>
 
 <section class="question" id="question">
-
   <div class="bigHeart">☾</div>
-
   <p class="eyebrow">03 • a thought to remember</p>
 
-  <h2>
-    Even in the dark,<br>
-    <em>stars still shine.</em>
-  </h2>
+  <h2>Even in the dark,<br><em>stars still shine.</em></h2>
 
   <p class="copy center">
     Not every day has to be perfect.
@@ -283,50 +243,35 @@ h1 em, h2 em {
   <button class="primary" id="reveal">
     A message for you <span>✦</span>
   </button>
-
 </section>
 
 <section class="envelopeSection" id="envelopeSection">
-
   <p class="eyebrow">04 • a message from the night</p>
-
   <h2>Open it when you're ready.</h2>
 
-  <div class="envelope-wrap"
-       id="envelope"
-       tabindex="0"
-       role="button"
+  <div class="envelope-wrap" id="envelope"
+       tabindex="0" role="button"
        aria-label="Open the message">
-
     <div class="envelope">
       <div class="env-back"></div>
-
       <div class="letter-paper">
         <b>From Alone Guy ☾</b>
         <span>A little reminder for you...</span>
       </div>
-
       <div class="pocket"></div>
       <div class="flap"></div>
       <div class="seal">☾</div>
     </div>
-
   </div>
 
   <p class="tapHint" id="tapHint">tap the envelope ☾</p>
-
 </section>
 
 <section class="confession" id="confession">
-
   <div class="bigHeart">✦</div>
-
   <p class="eyebrow">05 • remember this</p>
 
-  <h2>
-    To my future self,<br>
-    <em>keep shining.</em> ☾
-  </h2>
+  <h2>To my future self,<br><em>keep shining.</em> ☾</h2>
 
   <p class="copy center">
     I don't need to be the loudest person
@@ -354,7 +299,6 @@ h1 em, h2 em {
   <button class="restart" id="restart">
     ↻ Start the journey again
   </button>
-
 </section>
 
 </main>
@@ -371,65 +315,99 @@ h1 em, h2 em {
 
 <!-- MUSIC PLAYER -->
 <div class="music-player">
-
   <div class="music-heading">
     <strong>☾ ALONE GUY</strong>
     <span>🎧</span>
   </div>
 
   <select id="songSelect" aria-label="Choose a song">
-    <option value="song.mp3">Song 0</option>
-    <option value="song1.mp3">Song 1</option>
-    <option value="song2.mp3">Song 2</option>
-    <option value="song3.mp3">Song 3</option>
+    <option value="song.mp3">Tum Ho — Rockstar</option>
+    <option value="song1.mp3">Agar Tum Saath Ho</option>
+    <option value="song2.mp3">Phir Le Aya Dil</option>
+    <option value="song3.mp3">Kun Faya Kun</option>
+    <option value="song4.mp3">Channa Mereya</option>
+    <option value="song5.mp3">Kabira</option>
+    <option value="song6.mp3">Tujhe Kitna Chahne Lage</option>
+    <option value="song7.mp3">Khairiyat</option>
+    <option value="song8.mp3">Hawayein</option>
+    <option value="song9.mp3">Channa Ve</option>
+    <option value="song10.mp3">Tera Yaar Hoon Main</option>
+    <option value="song11.mp3">Kaise Hua</option>
+    <option value="song12.mp3">Apna Bana Le</option>
+    <option value="song13.mp3">O Maahi</option>
+    <option value="song14.mp3">Shayad</option>
+    <option value="song15.mp3">Bekhayali</option>
+    <option value="song16.mp3">Tadap Tadap</option>
+    <option value="song17.mp3">Aadat</option>
+    <option value="song18.mp3">Zaroori Tha</option>
+    <option value="song19.mp3">Tera Hone Laga Hoon</option>
+    <option value="song20.mp3">Pee Loon</option>
+    <option value="song21.mp3">Iktara</option>
+    <option value="song22.mp3">Tu Jaane Na</option>
+    <option value="song23.mp3">Jeene Laga Hoon</option>
+    <option value="song24.mp3">Phir Bhi Tumko Chaahunga</option>
+    <option value="song25.mp3">Dil Diyan Gallan</option>
+    <option value="song26.mp3">Raabta</option>
+    <option value="song27.mp3">Muskurane</option>
+    <option value="song28.mp3">Jo Tum Mere Ho</option>
   </select>
 
   <audio id="bgMusic" preload="metadata"></audio>
 
   <div class="music-controls">
     <button id="prevSong" type="button">⏮ Previous</button>
-    <button id="musicBtn" type="button">▶ Play</button>
+    <button id="musicBtn" type="button" aria-label="Play music">▶ Play</button>
     <button id="nextSong" type="button">Next ⏭</button>
   </div>
 
   <p class="music-status" id="musicStatus" aria-live="polite">
     Choose a song and tap Play
   </p>
-
 </div>
 
-<!-- Keep this file for your existing website animations and interactions -->
+<!-- Keep this file for your website's other animations/interactions.
+     Remove any music-player handlers from script.js to avoid conflicts. -->
 <script src="script.js"></script>
 
-<!-- MUSIC PLAYLIST -->
+<!-- MUSIC PLAYER LOGIC -->
 <script>
 (() => {
-  const songs = [
-    { name: "Song 0", src: "song.mp3" },
-    { name: "Song 1", src: "song1.mp3" },
-    { name: "Song 2", src: "song2.mp3" },
-    { name: "Song 3", src: "song3.mp3" }
-  ];
-
-  const player = document.getElementById("bgMusic");
   const select = document.getElementById("songSelect");
+  const player = document.getElementById("bgMusic");
   const playBtn = document.getElementById("musicBtn");
   const prevBtn = document.getElementById("prevSong");
   const nextBtn = document.getElementById("nextSong");
   const status = document.getElementById("musicStatus");
 
+  if (!select || !player || !playBtn || !prevBtn ||
+      !nextBtn || !status) return;
+
+  // Build the playlist directly from the dropdown.
+  // This keeps song names, filenames and indexes synchronized.
+  const songs = Array.from(select.options).map(option => ({
+    name: option.textContent.trim(),
+    src: option.value
+  }));
+
   let current = 0;
+
+  function updateButton() {
+    const playing = !player.paused && !player.ended;
+    playBtn.textContent = playing ? "⏸ Pause" : "▶ Play";
+    playBtn.setAttribute(
+      "aria-label",
+      playing ? "Pause music" : "Play music"
+    );
+  }
 
   function loadSong(index) {
     current = (index + songs.length) % songs.length;
-
     player.pause();
     player.src = songs[current].src;
     player.load();
-
     select.selectedIndex = current;
     status.textContent = songs[current].name + " selected";
-    playBtn.textContent = "▶ Play";
+    updateButton();
   }
 
   async function playSong() {
@@ -437,25 +415,26 @@ h1 em, h2 em {
       await player.play();
     } catch (error) {
       status.textContent =
-        "Unable to play. Check the MP3 filename or file.";
+        "Couldn't play this file. Check its name and location.";
+      updateButton();
     }
   }
 
-  playBtn.addEventListener("click", () => {
-    if (player.paused) {
-      playSong();
+  playBtn.addEventListener("click", async () => {
+    if (player.paused || player.ended) {
+      await playSong();
     } else {
       player.pause();
+      updateButton();
     }
   });
 
-  player.addEventListener("play", () => {
-    playBtn.textContent = "⏸ Pause";
-    status.textContent = "Playing " + songs[current].name;
-  });
+  player.addEventListener("play", updateButton);
+  player.addEventListener("pause", updateButton);
 
-  player.addEventListener("pause", () => {
-    playBtn.textContent = "▶ Play";
+  player.addEventListener("playing", () => {
+    status.textContent = "Playing " + songs[current].name;
+    updateButton();
   });
 
   player.addEventListener("ended", () => {
@@ -465,7 +444,8 @@ h1 em, h2 em {
 
   player.addEventListener("error", () => {
     status.textContent =
-      "Song file not found. Check the MP3 filename on GitHub.";
+      "Song file missing or unsupported. Check the filename.";
+    updateButton();
   });
 
   select.addEventListener("change", () => {
