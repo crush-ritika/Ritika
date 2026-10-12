@@ -1,26 +1,22 @@
 
- // =====================================
- // ALONE GUY 🌙
- // Complete Website JavaScript
- // Music player is handled by index.html
- // =====================================
+// =====================================
+// ALONE GUY 🌙
+// Website JavaScript
+// =====================================
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
-// =====================================
 // SMOOTH SCROLL
-// =====================================
-
 function reveal(element) {
   if (!element) return;
-
   element.scrollIntoView({
     behavior: "smooth",
     block: "start"
   });
 }
 
+// START BUTTON
 const startButton = $("#start");
 
 if (startButton) {
@@ -29,20 +25,21 @@ if (startButton) {
   });
 }
 
+// NEXT BUTTONS
 $$(".next").forEach((button) => {
   button.addEventListener("click", () => {
-    const target = document.getElementById(button.dataset.target);
-    reveal(target);
+    reveal(document.getElementById(button.dataset.target));
   });
 });
 
-// =====================================
 // NOTE CARDS / MODAL
-// =====================================
-
 const modal = $("#modal");
 const modalText = $("#modalText");
 const closeButton = $("#close");
+
+function closeModal() {
+  if (modal) modal.classList.remove("open");
+}
 
 if (modal && modalText) {
   $$(".note").forEach((card) => {
@@ -54,10 +51,6 @@ if (modal && modalText) {
       modal.classList.add("open");
     });
   });
-
-  function closeModal() {
-    modal.classList.remove("open");
-  }
 
   if (closeButton) {
     closeButton.addEventListener("click", closeModal);
@@ -72,10 +65,7 @@ if (modal && modalText) {
   });
 }
 
-// =====================================
 // REVEAL BUTTON
-// =====================================
-
 const revealButton = $("#reveal");
 
 if (revealButton) {
@@ -89,10 +79,7 @@ if (revealButton) {
   });
 }
 
-// =====================================
 // ENVELOPE ✉️
-// =====================================
-
 let envelopeOpened = false;
 
 function openEnvelope() {
@@ -127,10 +114,7 @@ if (envelope) {
   });
 }
 
-// =====================================
 // FLOATING STARS ✨
-// =====================================
-
 const particleLayer =
   $("#floatingParticles") || $("#floatingHearts");
 
@@ -141,9 +125,9 @@ function spawnParticle() {
 
   particle.className = "floating-heart";
   particle.textContent = Math.random() > 0.3 ? "✦" : "·";
-
   particle.style.left = Math.random() * 100 + "%";
-  particle.style.fontSize = 10 + Math.random() * 14 + "px";
+  particle.style.fontSize =
+    10 + Math.random() * 14 + "px";
 
   particle.style.setProperty(
     "--duration",
@@ -152,7 +136,7 @@ function spawnParticle() {
 
   particle.style.setProperty(
     "--drift",
-    (-40 + Math.random() * 80) + "px"
+    -40 + Math.random() * 80 + "px"
   );
 
   particleLayer.appendChild(particle);
@@ -168,10 +152,7 @@ if (particleLayer) {
   setInterval(spawnParticle, 1000);
 }
 
-// =====================================
-// TOAST MESSAGES
-// =====================================
-
+// TOAST MESSAGE
 let toastTimer;
 
 function showToast(message) {
@@ -189,10 +170,7 @@ function showToast(message) {
   }, 2600);
 }
 
-// =====================================
-// INSTAGRAM BUTTON 📸
-// =====================================
-
+// INSTAGRAM BUTTON
 const talkButton = $("#talk");
 
 if (talkButton) {
@@ -205,23 +183,16 @@ if (talkButton) {
   });
 }
 
-// =====================================
-// LATER BUTTON 🌙
-// Opens the separate video page
-// =====================================
-
+// LATER BUTTON
 const laterButton = $("#later");
 
 if (laterButton) {
   laterButton.addEventListener("click", () => {
-    window.location.href = "watch.html";
+    showToast("No rush. Take life at your own pace. 🌙");
   });
 }
 
-// =====================================
-// RESTART BUTTON 🔄
-// =====================================
-
+// RESTART BUTTON
 const restartButton = $("#restart");
 
 if (restartButton) {
@@ -245,12 +216,3 @@ if (restartButton) {
     });
   });
 }
-
-// =====================================
-// MUSIC PLAYER 🎵
-// =====================================
-// IMPORTANT:
-// The 29-song playlist and all music controls
-// are managed by the music script in index.html.
-// Do not add another music handler here.
-// =====================================
