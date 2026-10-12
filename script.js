@@ -1,8 +1,8 @@
 
-// =====================================
-// ALONE GUY 🌙
-// Website JavaScript
-// =====================================
+/* =====================================
+   ALONE GUY 🌙
+   Website JavaScript
+===================================== */
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
@@ -10,6 +10,7 @@ const $$ = (selector) => document.querySelectorAll(selector);
 // SMOOTH SCROLL
 function reveal(element) {
   if (!element) return;
+
   element.scrollIntoView({
     behavior: "smooth",
     block: "start"
@@ -183,12 +184,13 @@ if (talkButton) {
   });
 }
 
-// LATER BUTTON
+// STAY A LITTLE LONGER 🎬
+// Open watch.html as a separate page
 const laterButton = $("#later");
 
 if (laterButton) {
   laterButton.addEventListener("click", () => {
-    showToast("No rush. Take life at your own pace. 🌙");
+    window.location.href = "watch.html";
   });
 }
 
