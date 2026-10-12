@@ -207,13 +207,14 @@ if (talkButton) {
 
 // =====================================
 // LATER BUTTON 🌙
+// Opens the separate video page
 // =====================================
 
 const laterButton = $("#later");
 
 if (laterButton) {
   laterButton.addEventListener("click", () => {
-    showToast("No rush. Take life at your own pace. 🌙");
+    window.location.href = "watch.html";
   });
 }
 
