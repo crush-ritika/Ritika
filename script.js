@@ -177,7 +177,7 @@ const talkButton = $("#talk");
 if (talkButton) {
   talkButton.addEventListener("click", () => {
     window.open(
-      "https://www.instagram.com/Sushant.x.822/",
+      "https://www.instagram.com/brave_thinker_/",
       "_blank",
       "noopener,noreferrer"
     );
