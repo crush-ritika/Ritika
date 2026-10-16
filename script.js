@@ -33,22 +33,23 @@ $$(".next").forEach((button) => {
   });
 });
 
-// NOTE CARDS / MODAL
+// NOTE CARDS / MODAL 🌙
 const modal = $("#modal");
 const modalText = $("#modalText");
 const closeButton = $("#close");
 
 function closeModal() {
-  if (modal) modal.classList.remove("open");
+  if (modal) {
+    modal.classList.remove("open");
+    modal.classList.remove("show");
+  }
 }
 
 if (modal && modalText) {
-  $$(".note").forEach((card) => {
+  $$(".note[data-note]").forEach((card) => {
     card.addEventListener("click", () => {
-      modalText.textContent =
-        card.dataset.note ||
-        "Some thoughts are better left quiet. 🌙";
-
+      modalText.textContent = card.dataset.note;
+      modal.classList.remove("show");
       modal.classList.add("open");
     });
   });
@@ -84,12 +85,12 @@ if (revealButton) {
 let envelopeOpened = false;
 
 function openEnvelope() {
-  const envelope = $("#envelope");
+  const currentEnvelope = $("#envelope");
 
-  if (!envelope || envelopeOpened) return;
+  if (!currentEnvelope || envelopeOpened) return;
 
   envelopeOpened = true;
-  envelope.classList.add("open");
+  currentEnvelope.classList.add("open");
 
   const hint = $("#tapHint");
 
@@ -185,7 +186,6 @@ if (talkButton) {
 }
 
 // STAY A LITTLE LONGER 🎬
-// Open watch.html as a separate page
 const laterButton = $("#later");
 
 if (laterButton) {
@@ -212,39 +212,11 @@ if (restartButton) {
       hint.textContent = "tap the envelope ☾";
     }
 
+    closeModal();
+
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
-  });
-}
-
-/* 🌙 Interactive Little World cards */
-document.querySelectorAll(".note[data-note]").forEach(card => {
-  card.addEventListener("click", () => {
-    const message = card.dataset.note;
-    const modal = document.getElementById("modal");
-    const modalText = document.getElementById("modalText");
-
-    if (modal && modalText) {
-      modalText.textContent = message;
-      modal.classList.add("show");
-    }
-  });
-});
-
-/* ✨ Close the message popup */
-const closeButton = document.getElementById("close");
-const modal = document.getElementById("modal");
-
-if (closeButton && modal) {
-  closeButton.addEventListener("click", () => {
-    modal.classList.remove("show");
-  });
-
-  modal.addEventListener("click", event => {
-    if (event.target === modal) {
-      modal.classList.remove("show");
-    }
   });
 }
