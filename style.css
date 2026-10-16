@@ -132,4 +132,97 @@
   }
 }
 
+/* ✨ Fix the navigation and message buttons */
+button.link,
+button.primary,
+button.restart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 13px 20px;
+  border: 1px solid #647697;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #252b3a, #343c50);
+  color: #f4e9f0;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
 
+button.primary {
+  background: linear-gradient(135deg, #9baed0, #c1cce2);
+  color: #08090d;
+  border: 1px solid #c1cce2;
+}
+
+button.link:hover,
+button.primary:hover,
+button.restart:hover {
+  background: linear-gradient(135deg, #414b64, #57405d);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+button:focus-visible {
+  outline: 3px solid #f2b8dc;
+  outline-offset: 3px;
+}
+
+/* ✨ Little-things cards */
+.notes {
+  display: grid;
+  gap: 12px;
+}
+
+button.note {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  transition: border-color .2s ease, transform .2s ease;
+}
+
+button.note:hover {
+  border-color: #9baed0;
+  transform: translateY(-2px);
+}
+
+/* ✨ Ending buttons */
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin: 28px auto;
+}
+
+.choices button {
+  flex: 1 1 180px;
+  min-height: 54px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #252b3a, #343c50);
+  color: #f4e9f0;
+  border: 2px solid #9baed0;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 380px) {
+  .choices {
+    flex-direction: column;
+  }
+
+  .choices button {
+    width: 100%;
+    flex-basis: auto;
+  }
+}
