@@ -218,3 +218,33 @@ if (restartButton) {
     });
   });
 }
+
+/* 🌙 Interactive Little World cards */
+document.querySelectorAll(".note[data-note]").forEach(card => {
+  card.addEventListener("click", () => {
+    const message = card.dataset.note;
+    const modal = document.getElementById("modal");
+    const modalText = document.getElementById("modalText");
+
+    if (modal && modalText) {
+      modalText.textContent = message;
+      modal.classList.add("show");
+    }
+  });
+});
+
+/* ✨ Close the message popup */
+const closeButton = document.getElementById("close");
+const modal = document.getElementById("modal");
+
+if (closeButton && modal) {
+  closeButton.addEventListener("click", () => {
+    modal.classList.remove("show");
+  });
+
+  modal.addEventListener("click", event => {
+    if (event.target === modal) {
+      modal.classList.remove("show");
+    }
+  });
+}
