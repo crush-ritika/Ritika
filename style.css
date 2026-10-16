@@ -73,3 +73,63 @@
     font-size: 14px;
   }
 }
+
+/* Make BOTH ending buttons clearly clickable */
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 28px auto;
+}
+
+.choices button {
+  flex: 1 1 180px;
+  min-height: 52px;
+  padding: 14px 18px;
+
+  background: linear-gradient(135deg, #252b3a, #343c50);
+  color: #f4e9f0;
+
+  border: 2px solid #9baed0;
+  border-radius: 14px;
+
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+
+  box-shadow: 0 5px 16px #9baed025;
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease,
+              background 0.2s ease;
+}
+
+/* Make both buttons react when touched */
+.choices button:hover {
+  background: linear-gradient(135deg, #414b64, #57405d);
+  box-shadow: 0 0 20px #c5a6e655;
+  transform: translateY(-3px);
+}
+
+.choices button:active {
+  transform: scale(0.96);
+}
+
+/* Keyboard accessibility */
+.choices button:focus-visible {
+  outline: 3px solid #f2b8dc;
+  outline-offset: 4px;
+}
+
+/* Smaller phone screens */
+@media (max-width: 380px) {
+  .choices {
+    flex-direction: column;
+  }
+
+  .choices button {
+    width: 100%;
+  }
+}
+
+
