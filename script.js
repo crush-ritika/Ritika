@@ -33,7 +33,10 @@ $$(".next").forEach((button) => {
   });
 });
 
+// =====================================
 // NOTE CARDS / MODAL 🌙
+// =====================================
+
 const modal = $("#modal");
 const modalText = $("#modalText");
 const closeButton = $("#close");
@@ -67,7 +70,10 @@ if (modal && modalText) {
   });
 }
 
-// REVEAL BUTTON
+// =====================================
+// A MESSAGE FOR YOU ✨
+// =====================================
+
 const revealButton = $("#reveal");
 
 if (revealButton) {
@@ -78,10 +84,53 @@ if (revealButton) {
       reveal($("#envelopeSection"));
       document.body.classList.remove("transitioning");
     }, 380);
+
+    let message = $("#specialMessage");
+
+    if (!message) {
+      message = document.createElement("div");
+      message.id = "specialMessage";
+
+      message.innerHTML = `
+        <span style="font-size:26px;">🌙 ✨</span>
+        <h3 style="margin:12px 0;">A little reminder for you</h3>
+        <p>
+          You don't have to have everything figured out.
+          Take your time, protect your peace, and keep
+          becoming the person you want to be.
+        </p>
+        <p>
+          Even on difficult days, there is still something
+          beautiful waiting for you. Never forget that. ♡
+        </p>
+      `;
+
+      message.style.cssText = `
+        margin: 20px 0;
+        padding: 24px;
+        background: linear-gradient(145deg, #151923, #252b3a);
+        color: #e9edf7;
+        border: 1px solid #8295b8;
+        border-radius: 20px;
+        font-size: 16px;
+        line-height: 1.9;
+        box-shadow: 0 0 25px rgba(155,174,208,0.15);
+        animation: messageAppear 0.5s ease;
+      `;
+
+      revealButton.insertAdjacentElement("afterend", message);
+      revealButton.textContent = "♡ Message opened";
+    } else {
+      message.remove();
+      revealButton.textContent = "A message for you ✦";
+    }
   });
 }
 
+// =====================================
 // ENVELOPE ✉️
+// =====================================
+
 let envelopeOpened = false;
 
 function openEnvelope() {
@@ -116,7 +165,10 @@ if (envelope) {
   });
 }
 
+// =====================================
 // FLOATING STARS ✨
+// =====================================
+
 const particleLayer =
   $("#floatingParticles") || $("#floatingHearts");
 
@@ -154,7 +206,10 @@ if (particleLayer) {
   setInterval(spawnParticle, 1000);
 }
 
+// =====================================
 // TOAST MESSAGE
+// =====================================
+
 let toastTimer;
 
 function showToast(message) {
@@ -172,7 +227,10 @@ function showToast(message) {
   }, 2600);
 }
 
+// =====================================
 // INSTAGRAM BUTTON
+// =====================================
+
 const talkButton = $("#talk");
 
 if (talkButton) {
@@ -185,7 +243,10 @@ if (talkButton) {
   });
 }
 
+// =====================================
 // STAY A LITTLE LONGER 🎬
+// =====================================
+
 const laterButton = $("#later");
 
 if (laterButton) {
@@ -194,7 +255,10 @@ if (laterButton) {
   });
 }
 
+// =====================================
 // RESTART BUTTON
+// =====================================
+
 const restartButton = $("#restart");
 
 if (restartButton) {
@@ -203,6 +267,7 @@ if (restartButton) {
 
     const currentEnvelope = $("#envelope");
     const hint = $("#tapHint");
+    const specialMessage = $("#specialMessage");
 
     if (currentEnvelope) {
       currentEnvelope.classList.remove("open");
@@ -210,6 +275,14 @@ if (restartButton) {
 
     if (hint) {
       hint.textContent = "tap the envelope ☾";
+    }
+
+    if (specialMessage) {
+      specialMessage.remove();
+    }
+
+    if (revealButton) {
+      revealButton.textContent = "A message for you ✦";
     }
 
     closeModal();
