@@ -1,228 +1,85 @@
 
-/* ==================================
-   RITIKA'S PHOTO ♡
-================================== */
+/* 🌙 MAKE ALL FIVE BUTTONS LOOK CLICKABLE */
 
-.ritika-section {
-  padding: 35px 20px 45px;
-  text-align: center;
-  background: linear-gradient(
-    145deg,
-    rgba(24, 29, 42, 0.98),
-    rgba(14, 17, 25, 0.98)
-  );
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
-}
-
-.ritika-title {
-  color: var(--accent);
-  font-size: 13px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-
-.ritika-section h2 {
-  color: var(--text);
-  margin-bottom: 18px;
-}
-
-.ritika-photo-frame {
-  width: min(75%, 290px);
-  margin: 22px auto;
-  overflow: hidden;
-  border: 1px solid #343c4d;
-  border-radius: 18px;
-  background: var(--card);
-  box-shadow: 0 0 35px var(--glow);
-  transition: transform 0.3s ease;
-}
-
-.ritika-photo-frame:hover {
-  transform: translateY(-4px);
-}
-
-.ritika-photo-frame img {
+/* Three note cards */
+button.note {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-}
-
-.ritika-caption {
-  max-width: 440px;
-  margin: 18px auto 0;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.9;
-}
-
-/* RITIKA PHOTO — MOBILE 📱 */
-@media (max-width: 600px) {
-  .ritika-section {
-    padding: 30px 16px 35px;
-  }
-
-  .ritika-photo-frame {
-    width: min(75%, 260px);
-  }
-
-  .ritika-caption {
-    font-size: 14px;
-  }
-}
-
-/* Make BOTH ending buttons clearly clickable */
-.choices {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin: 28px auto;
-}
-
-.choices button {
-  flex: 1 1 180px;
-  min-height: 52px;
-  padding: 14px 18px;
-
-  background: linear-gradient(135deg, #252b3a, #343c50);
-  color: #f4e9f0;
-
-  border: 2px solid #9baed0;
-  border-radius: 14px;
-
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-
-  box-shadow: 0 5px 16px #9baed025;
-  transition: transform 0.2s ease,
-              box-shadow 0.2s ease,
-              background 0.2s ease;
-}
-
-/* Make both buttons react when touched */
-.choices button:hover {
-  background: linear-gradient(135deg, #414b64, #57405d);
-  box-shadow: 0 0 20px #c5a6e655;
-  transform: translateY(-3px);
-}
-
-.choices button:active {
-  transform: scale(0.96);
-}
-
-/* Keyboard accessibility */
-.choices button:focus-visible {
-  outline: 3px solid #f2b8dc;
-  outline-offset: 4px;
-}
-
-/* Smaller phone screens */
-@media (max-width: 380px) {
-  .choices {
-    flex-direction: column;
-  }
-
-  .choices button {
-    width: 100%;
-  }
-}
-
-/* ✨ Fix the navigation and message buttons */
-button.link,
-button.primary,
-button.restart {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 48px;
-  padding: 13px 20px;
-  border: 1px solid #647697;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #252b3a, #343c50);
-  color: #f4e9f0;
+  min-height: 70px;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, #151923, #202635);
+  color: #e9edf7;
+  border: 1px solid #343c4d;
+  border-radius: 20px;
   font-family: inherit;
   font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background .2s ease, transform .2s ease;
-}
-
-button.primary {
-  background: linear-gradient(135deg, #9baed0, #c1cce2);
-  color: #08090d;
-  border: 1px solid #c1cce2;
-}
-
-button.link:hover,
-button.primary:hover,
-button.restart:hover {
-  background: linear-gradient(135deg, #414b64, #57405d);
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-button:focus-visible {
-  outline: 3px solid #f2b8dc;
-  outline-offset: 3px;
-}
-
-/* ✨ Little-things cards */
-.notes {
-  display: grid;
-  gap: 12px;
-}
-
-button.note {
-  width: 100%;
   text-align: left;
   cursor: pointer;
-  font-family: inherit;
-  font-size: 15px;
-  line-height: 1.6;
-  transition: border-color .2s ease, transform .2s ease;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s ease;
 }
 
 button.note:hover {
   border-color: #9baed0;
-  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(155, 174, 208, 0.2);
+  transform: translateY(-3px);
 }
 
-/* ✨ Ending buttons */
-.choices {
-  display: flex;
-  flex-wrap: wrap;
+/* Message and navigation buttons */
+button.link,
+button.primary,
+button.restart,
+button#reveal,
+button#later,
+button#talk {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  gap: 14px;
-  margin: 28px auto;
-}
-
-.choices button {
-  flex: 1 1 180px;
-  min-height: 54px;
-  padding: 14px 18px;
+  gap: 8px;
+  min-height: 50px;
+  padding: 13px 22px;
   background: linear-gradient(135deg, #252b3a, #343c50);
   color: #f4e9f0;
-  border: 2px solid #9baed0;
+  border: 1px solid #8295b8;
   border-radius: 14px;
   font-family: inherit;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 5px 16px rgba(155, 174, 208, 0.12);
+  transition: all 0.25s ease;
 }
 
-@media (max-width: 380px) {
-  .choices {
-    flex-direction: column;
-  }
+button.link:hover,
+button.primary:hover,
+button.restart:hover,
+button#reveal:hover,
+button#later:hover,
+button#talk:hover {
+  background: linear-gradient(135deg, #414b64, #57405d);
+  color: #ffffff;
+  border-color: #c1cce2;
+  box-shadow: 0 0 20px rgba(193, 204, 226, 0.25);
+  transform: translateY(-3px);
+}
 
-  .choices button {
-    width: 100%;
-    flex-basis: auto;
-  }
+button.link:active,
+button.primary:active,
+button.restart:active,
+button#reveal:active,
+button#later:active,
+button#talk:active {
+  transform: scale(0.97);
+}
+
+/* Keyboard focus */
+button.note:focus-visible,
+button.link:focus-visible,
+button.primary:focus-visible,
+button.restart:focus-visible,
+button#reveal:focus-visible,
+button#later:focus-visible,
+button#talk:focus-visible {
+  outline: 3px solid #f2b8dc;
+  outline-offset: 3px;
 }
