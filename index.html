@@ -104,7 +104,10 @@ h1 em, h2 em { color: var(--accent); }
   border-radius: 16px;
 }
 
-.note { padding: 18px; }
+.note {
+  padding: 18px;
+  cursor: pointer;
+}
 
 .music-player {
   position: fixed;
@@ -173,6 +176,57 @@ h1 em, h2 em { color: var(--accent); }
 .music-player button:disabled {
   opacity: .6;
 }
+
+/* NOTE CARD POPUP */
+#modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.82);
+}
+
+#modal.open {
+  display: flex;
+}
+
+#modal .modalCard {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  padding: 30px 24px;
+  border: 1px solid #8295b8;
+  border-radius: 22px;
+  background: #151923;
+  color: #e9edf5;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(155,174,208,.2);
+}
+
+#modal .close {
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  padding: 5px 10px;
+  border: 0;
+  background: transparent;
+  color: #e9edf5;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+#modal .modalHeart {
+  color: #9baed0;
+  font-size: 30px;
+}
+
+#modal #modalText {
+  font-size: 16px;
+  line-height: 1.8;
+}
 </style>
 </head>
 
@@ -210,7 +264,7 @@ h1 em, h2 em { color: var(--accent); }
   <small class="swipe">take it slow ↓</small>
 </section>
 
-<!-- RITIKA'S PHOTO: DIRECTLY AFTER YOUR PHOTO SECTION -->
+<!-- RITIKA'S PHOTO -->
 <section class="ritika-section" id="ritika">
   <p class="ritika-title">✦ A little corner ✦</p>
 
@@ -253,26 +307,29 @@ h1 em, h2 em { color: var(--accent); }
   <h2>Little things<br><em>that feel like me.</em></h2>
 
   <div class="notes">
-    <button class="note"
+
+    <button class="note" type="button"
       data-note="The world gets quiet, but the mind keeps telling stories.">
       <span>🌙</span>
       <strong>Midnight thoughts</strong>
       <small>when everything slows down</small>
     </button>
 
-    <button class="note"
-      data-note="Sometimes one song understands a mood better than a thousand words.">
-      <span>🎧</span>
-      <strong>Lost in music</strong>
-      <small>my own little universe</small>
+    <!-- UPDATED CRUSH CARD 💗 -->
+    <button class="note" type="button"
+      data-note="I don't know when you became my favorite thought, but somehow, you are. Sometimes I smile for no reason, then realize I'm thinking about you again. 💗🌙">
+      <span>💗</span>
+      <strong>Lost in you</strong>
+      <small>a little crush, a thousand thoughts</small>
     </button>
 
-    <button class="note"
+    <button class="note" type="button"
       data-note="Enjoy your own company, but leave room for people who bring good energy into your life.">
       <span>🌌</span>
       <strong>My own space</strong>
       <small>peace over noise</small>
     </button>
+
   </div>
 
   <p class="tap">tap a card ☾</p>
@@ -357,9 +414,11 @@ h1 em, h2 em { color: var(--accent); }
 
 </main>
 
+<!-- NOTE POPUP -->
 <div class="modal" id="modal">
   <div class="modalCard">
-    <button class="close" id="close">×</button>
+    <button class="close" id="close" type="button"
+      aria-label="Close popup">×</button>
     <div class="modalHeart">☾</div>
     <p id="modalText"></p>
   </div>
